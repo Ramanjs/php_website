@@ -1,0 +1,57 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.form {
+	margin-top: 100px;
+	margin-left: 500px;
+	margin-right: 500px;
+	display: block;
+	align-self: center;
+	left: 200px;
+	border: 3px solid green;
+	padding: 50px;
+	background: white;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid gray;
+  border-radius: 10px;
+  background: white;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 8px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+a {
+	text-decoration: none;
+	margin-left: 5px;
+	padding: 8px 8px;
+	background-color: #4CAF50; 
+	display: inline-block;
+	color: white;
+
+}
+
+.title{
+	color: green;
+	font-size: 20px;
+	padding: 5px 10px;
+	margin: 5px 50px;
+	display: inline-block;
+}
+
+
