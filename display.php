@@ -32,8 +32,8 @@ try {
       $db["pass"],
       ltrim($db["path"], "/")
   ));
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("SELECT id, name, class, section FROM STUDENTS");
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $stmt = $pdo->prepare("SELECT id, name, class, section FROM STUDENTS");
   $stmt->execute();
 
   // set the resulting array to associative
@@ -44,6 +44,6 @@ try {
 } catch(PDOException $e) {
   echo "Error: " . $e->getMessage();
 }
-$conn = null;
+$pdo = null;
 echo "</table>";
 ?>
