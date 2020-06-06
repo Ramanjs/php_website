@@ -1,53 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
-	<title></title>
-</head>
-<body>
-
-<table>
-
-	<tr>
-		<th>ID</th>
-		<th>Name</th>
-		<th>Class</th>
-		<th>Section</th>
-	</tr>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+echo "<table style='border: solid 1px black;'>";
+echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
 
-//Create connection
-$conn = new mysqli($servername, $username, $password);
+class TableRows extends RecursiveIteratorIterator {
+  function __construct($it) {
+    parent::__construct($it, self::LEAVES_ONLY);
+  }
 
-//Check connection
-if($conn->connect_error){
-	die("Connection failed: ".$conn->connect_error);
+  function current() {
+    return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
+  }
+
+  function beginChildren() {
+    echo "<tr>";
+  }
+
+  function endChildren() {
+    echo "</tr>" . "\n";
+  }
 }
 
+try {
+  //Create connection
+  $db = parse_url(getenv("DATABASE_URL"));
 
-// use database
-$sql = "USE myDb;";
-if($conn->query($sql) !== TRUE){
-	echo "Error using database: ".$conn->error;
+  $pdo = new PDO("pgsql:" . sprintf(
+      "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+      $db["host"],
+      $db["port"],
+      $db["user"],
+      $db["pass"],
+      ltrim($db["path"], "/")
+  ));
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $stmt = $conn->prepare("SELECT id, name, class, section FROM student");
+  $stmt->execute();
+
+  // set the resulting array to associative
+  $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+  foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+    echo $v;
+  }
+} catch(PDOException $e) {
+  echo "Error: " . $e->getMessage();
 }
+$conn = null;
+echo "</table>";
 ?>
-<?php
-//display database
-function display(){
-	$sql = "SELECT * FROM STUDENT;";
-	$result = $GLOBALS['conn']->query($sql);
-	
-	while($row = $result->fetch_assoc()){
-		echo "<tr> <td> ".$row['ID']."</td> <td> 
-		".$row['NAME']." </td> <td> ".$row['CLASS']." </td> <td>  ".$row['SECTION']."</td> </tr>"; 
-	}
-}
-
-display();
-?>
-</table>
-</body>
-</html>
