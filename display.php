@@ -33,7 +33,7 @@ try {
       ltrim($db["path"], "/")
   ));
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("SELECT id, name, class, section FROM student");
+  $stmt = $conn->prepare("SELECT id, name, class, section FROM STUDENTS");
   $stmt->execute();
 
   // set the resulting array to associative
