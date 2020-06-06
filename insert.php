@@ -17,15 +17,30 @@ try{
 	$name = $class = $section = "";
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		$name = test_input($_POST["name"]);
+		
+		 
+		$stmt = conn->prepare("INSERT INTO STUDENT (NAME,CLASS,SECTION) VALUES(:name, :class, :section);");
+		$stmt->bindParam(':name', $name);
+ 		$stmt->bindParam(':class', $class);
+  		$stmt->bindParam(':section', $section);
+
+  		$name = test_input($_POST["name"]);
 		$class = test_input($_POST["class"]);
 		$section = test_input($_POST["section"]);
-		 
-		$sql = "INSERT INTO STUDENT (NAME,CLASS,SECTION) VALUES('$name', '$class', '$section');";
+		$stmt->execute();
 		
 		$conn = exec($sql);
 		echo "New record created <br>";
+
 	}
+
+	function test_input($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  return $data;
+	}
+
 
 }catch(PDOException $e){
 	echo "connection error :" . $e->getMessage();
@@ -58,11 +73,5 @@ try{
 // 	}
 // }
 
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
 
 ?>
