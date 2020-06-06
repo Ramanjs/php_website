@@ -29,7 +29,7 @@ try{
 		$section = test_input($_POST["section"]);
 		$stmt->execute();
 		
-		$conn = exec($sql);
+		
 		echo "New record created <br>";
 
 	}
@@ -72,6 +72,6 @@ try{
 // 		echo "error: ".$conn->error."<br>";
 // 	}
 // }
-
+$conn = null;
 
 ?>
