@@ -14,12 +14,12 @@ try{
 	));
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	$name = $class = $section = "";
+	
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 		 
-		$stmt = conn->prepare("INSERT INTO STUDENTS (NAME,CLASS,SECTION) VALUES(:name, :class, :section);");
+		$stmt = conn->prepare("INSERT INTO STUDENTS (NAME, CLASS, SECTION) VALUES(:name, :class, :section);");
 		$stmt->bindParam(':name', $name);
  		$stmt->bindParam(':class', $class);
   		$stmt->bindParam(':section', $section);
