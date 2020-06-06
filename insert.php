@@ -41,10 +41,10 @@ try{
 	  return $data;
 	}
 
-
-}catch(PDOException $e){
-	echo "connection error :" . $e->getMessage();
 }
+// }catch(PDOException $e){
+// 	echo "connection error :" . $e->getMessage();
+// }
 
 $pdo = null;
 
