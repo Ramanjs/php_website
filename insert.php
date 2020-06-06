@@ -1,6 +1,6 @@
 <?php
 
-try{
+// try{
 	//Create connection
 	$db = parse_url(getenv("DATABASE_URL"));
 
@@ -42,9 +42,9 @@ try{
 	}
 
 
-}catch(PDOException $e){
-	echo "connection error :" . $e->getMessage();
-}
+// }catch(PDOException $e){
+// 	echo "connection error :" . $e->getMessage();
+// }
 // //Check connection
 // if($conn->connect_error){
 // 	die("Connection failed: ".$conn->connect_error);
@@ -72,6 +72,6 @@ try{
 // 		echo "error: ".$conn->error."<br>";
 // 	}
 // }
-$conn = null;
+$pdo = null;
 
 ?>
