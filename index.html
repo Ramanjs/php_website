@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="styles/style.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<title>My First Database Website</title>
 </head>
 <body>
 
-<div class="form">
+<div class="container">
 	<form method="post" action="insert.php">
-		<span class="title">Insert Record</span><br>
-		Name: <input type="text" name="name"><br>
-		Class: <input type="text" name="class"><br>
-		Section: <input type="text" name="section"><br>
-		<input type="submit">
-		<a href="display.php">Display Database</a>
+		<div class="form-group">
+			<span class="title text-primary">Insert Record</span>
+	    </div>
+	    <div class="form-group">
+			<label for="name">Name: </label>
+			<input type="text" class="form-control" placeholder="enter name" name="name">
+		</div>
+		<div class="form-group">
+			<label for="class">Class:</label>
+			<input type="text" class="form-control" placeholder="enter class" name="class"><br>
+		</div>
+		<div class="form-group">
+			<label for="section">Section:</label>
+			<input type="text" class="form-control" placeholder="enter section" name="section"><br>
+		</div>
+		<div class="row">
+			<div class="col">
+				<input type="submit" class="btn btn-primary">
+			</div>
+			<div class="col">
+				<a href="display.php" class="btn btn-primary">Display Database</a>
+			</div>
+		</div>
 	</form>
 	
 </div>
