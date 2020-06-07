@@ -1,4 +1,5 @@
 <?php
+echo "<meta name="viewport" content="width=device-width, initial-scale=1.0"/>";
 echo "<table style='border: solid 1px black;'>";
 echo "<tr><th>Id</th><th>Name</th><th>Class</th><th>Section</th></tr>";
 
