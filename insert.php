@@ -32,7 +32,7 @@ try {
 		
 
 		echo "New record created <br>";
-		echo "<a href="display.php" class="btn btn-primary">Display Database</a>";
+
 
 	}
 } catch (Exception $e) {
@@ -49,4 +49,5 @@ function test_input($data) {
 $pdo = null;
 
 ?>
+<a href="display.php" class="btn btn-primary">Display Database</a>
 </html>
