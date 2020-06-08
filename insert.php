@@ -29,7 +29,7 @@ try {
 		$section = test_input($_POST["section"]);
 		$stmt->execute();
 		
-		
+		echo "<html><head> <meta name="viewport" content="width=device-width, initial-scale=1.0"/></head></html>";
 		echo "New record created <br>";
 
 	}
